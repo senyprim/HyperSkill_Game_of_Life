@@ -7,7 +7,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int len=scanner.nextInt();
         int init=scanner.nextInt();
-        Life life = new Life(len,len,init);
-        life.show();
+        int ngeneration=scanner.nextInt();
+        Universe.create(len,init).getNGeneration(ngeneration).show();
+
     }
 }
