@@ -29,7 +29,7 @@ public class Universe {
     public void show(){
         for(int y=0;y<this.height;y++){
             drawLine(y);
-            System.out.println();
+            if (y<this.height-1) System.out.println();
         }
     }
 
@@ -78,6 +78,13 @@ public class Universe {
         }
         return  count;
     }
+    public int aliveAll(){
+        int result=0;
+        for(Cell[] line:this.universe){
+            result+=aliveCount(line);
+        }
+        return result;
+    }
     private Universe nextGeneration(){
         Cell[][] result=new Cell[height][width];
         for(int y=0;y<height;y++){
@@ -95,7 +102,7 @@ public class Universe {
         this.universe=result;
         return this;
     }
-    public static Universe create(int width,int init){
+    public static Universe create(int width,long init){
         Cell[][] universe = new Cell[width][width];
         Random rnd = new Random(init);
         for(int y=0;y<width;y++){
