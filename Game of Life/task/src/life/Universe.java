@@ -8,12 +8,19 @@ import java.util.Random;
 public class Universe {
     private int width;
     private int height;
+    private int nGeneration;
     private Cell[][] universe;
+
+    public int getWidth(){
+        return width;
+    }
+    public int getGeneration() {return nGeneration;}
 
     public Universe(Cell[][] universe){
         this.height=universe.length;
         this.width=universe[0].length;
         this.universe=universe;
+        this.nGeneration=1;
     }
     public Universe getNGeneration(int n){
         if (n<0){
@@ -21,7 +28,7 @@ public class Universe {
         }
         if (n==0) return this;
 
-        for(int counter=0;counter<n;counter++){
+        while(n>this.getGeneration()){
             nextGeneration();
         }
         return this;
@@ -33,7 +40,7 @@ public class Universe {
         }
     }
 
-    private Cell getCell(int y,int x){
+    public Cell getCell(int y,int x){
         if (x<0 || y<0 || x>=width || y>=height){
             throw  new IllegalArgumentException("Error:Coordinates can not be negative or more sides");
         }
@@ -47,7 +54,7 @@ public class Universe {
     }
     private void drawLine(int y){
         for(int x=0;x<this.width;x++){
-            getCell(y,x).drawCell();
+            System.out.print(getCell(y,x).toString());
         }
     }
 
@@ -85,7 +92,7 @@ public class Universe {
         }
         return result;
     }
-    private Universe nextGeneration(){
+    public Universe nextGeneration(){
         Cell[][] result=new Cell[height][width];
         for(int y=0;y<height;y++){
             for(int x=0;x<width;x++){
@@ -100,6 +107,7 @@ public class Universe {
             }
         }
         this.universe=result;
+        this.nGeneration++;
         return this;
     }
     public static Universe create(int width,long init){

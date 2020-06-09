@@ -1,5 +1,7 @@
 package life;
 
+import java.awt.*;
+
 public class Cell {
     private boolean isAlive;
     public Cell(boolean isAlive){
@@ -8,7 +10,8 @@ public class Cell {
     public boolean isAlive(){
         return this.isAlive;
     }
-    public void drawCell(){
-        System.out.print(isAlive?"O":" ");
+
+    public String toString(){
+        return isAlive?"O":" ";
     }
 }
