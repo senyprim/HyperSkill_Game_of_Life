@@ -9,10 +9,6 @@ public class View extends JFrame{
     boolean[][] cashData;
 
     public View()  {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        JPanel topPanel=new JPanel();
-
         generationLabel=new JLabel("Generation #");
         generationLabel.setName("GenerationLabel");
         aliveLabel=new JLabel("Alive: ");
@@ -32,19 +28,15 @@ public class View extends JFrame{
             }
         };
 
-        //centerPanel.setPreferredSize(new Dimension(350,350));
-
-        topPanel.add(generationLabel);
-        topPanel.add(aliveLabel);
-        topPanel.setLayout(new BoxLayout(topPanel,BoxLayout.Y_AXIS));
-
-        setLayout(new BorderLayout());
-        add(topPanel,BorderLayout.NORTH);
-        add(centerPanel,BorderLayout.CENTER);
-
-        pack();
-        setVisible(true);
     }
+
+    public JLabel getGenerationLabel(){
+        return generationLabel;
+    }
+    public JLabel getAliveLabel(){
+        return aliveLabel;
+    }
+    public JPanel getDataView(){return centerPanel;}
 
     public void paintUniverse(Graphics g,int width,int height){
         int dx=width/cashData.length;

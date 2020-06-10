@@ -7,10 +7,10 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args)  {
-        Model model=Model.create(40,30);
+        Model model=Model.create(30);
         View view=new View();
         Controler controler = new Controler(model,view);
-        controler.goToGeneration(100);
-
+        Form form=new Form(controler);
+        controler.setSourceGeneration(100);
     }
 }

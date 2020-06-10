@@ -1,5 +1,6 @@
 package life;
 
+import java.util.Date;
 import java.util.Random;
 
 public class Model {
@@ -26,6 +27,9 @@ public class Model {
             }
         }
         return new Model(universe);
+    }
+    public static Model create(int width){
+        return create(width,(new Date()).getTime());
     }
 
     public int getWidth(){
