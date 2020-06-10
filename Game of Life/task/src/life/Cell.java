@@ -10,8 +10,4 @@ public class Cell {
     public boolean isAlive(){
         return this.isAlive;
     }
-
-    public String toString(){
-        return isAlive?"O":" ";
-    }
 }
